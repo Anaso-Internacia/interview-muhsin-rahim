@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Loader } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const MovieSearch = () => {
+  const navigate = useNavigate();
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -64,9 +66,10 @@ const MovieSearch = () => {
         <div className="flex flex-col gap-6">
           {movies.map((movie) => (
             <div
-              key={movie.imdbID}
-              className="flex flex-col md:flex-row gap-4 bg-gray-800 hover:bg-gray-700 p-6 rounded-xl transition-colors"
-            >
+            key={movie.imdbID}
+            onClick={() => window.open(`/movie/${movie.imdbID}`, '_blank')}
+            className="cursor-pointer flex flex-col md:flex-row gap-4 bg-gray-800 hover:bg-gray-700 p-6 rounded-xl transition-colors"
+          >
               <div className="w-full md:w-64 flex-shrink-0">
                 <img
                   src={movie.Poster !== 'N/A' ? movie.Poster : '/api/placeholder/300/445'}
@@ -75,7 +78,7 @@ const MovieSearch = () => {
                 />
               </div>
               <div className="flex-grow">
-                <h2 className="text-xl font-semibold mb-2">{movie.Title}</h2>
+              <h2 className="text-xl font-semibold mb-2 text-white">{movie.Title}</h2>
                 <p className="text-gray-400 mb-2">{movie.Year}</p>
                 <p className="text-gray-500">Type: {movie.Type}</p>
                 <a 
