@@ -1,14 +1,25 @@
 import { useState, useEffect } from 'react';
 import { Loader } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 
+/**
+ * MovieSearch component handles the movie search functionality and results display
+ * Features:
+ * - Real-time search
+ * - Error handling
+ * - Loading states
+ * - Responsive grid layout
+ */
 const MovieSearch = () => {
-  const navigate = useNavigate();
+// State management for search query, results, loading state, and errors
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  /**
+   * Effect hook to handle real-time search
+   * Includes debouncing to prevent excessive API calls
+*/
   useEffect(() => {
     const searchMovies = async () => {
       if (query.trim().length < 3) {
@@ -34,7 +45,8 @@ const MovieSearch = () => {
         setLoading(false);
       }
     };
-
+    
+    // Debounce search to wait for user to stop typing
     const timeoutId = setTimeout(() => {
       searchMovies();
     }, 500);

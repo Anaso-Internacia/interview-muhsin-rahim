@@ -1,11 +1,24 @@
 import { useState, useEffect } from 'react';
 import { Loader } from 'lucide-react';
 
+/**
+ * MovieDetails component displays detailed information about a specific movie
+  * Features:
+ * - Fetches and displays comprehensive movie details
+ * - Handles loading states
+ * - Error handling
+ * - Responsive layout
+ */
 const MovieDetails = ({ movieId }) => {
+// State for movie details, loading state, and errors
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
+   /**
+   * Effect hook to fetch movie details when component mounts
+   * or when movieId changes
+   */
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
