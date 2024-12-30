@@ -19,3 +19,19 @@ A React application for searching movies using the OMDB API.
 - Vite
 - OMDB API
 
+## Setup & Installation
+
+1. Clone repository
+
+git clone https://github.com/MuhsinAR/movie-search.git
+
+
+2. Install dependencies
+
+npm install
+
+3. Start the app
+
+npm run dev
+
+4. Open the vite locally hosted app in your browser 
